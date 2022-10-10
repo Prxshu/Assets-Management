@@ -1,0 +1,42 @@
+
+
+<div class="container">
+<%= form_with(model: @assest, data: {turbo:false})  do |f| %>
+  
+    <p>
+      <%= f.label :assest_name  %><br/>
+      <%= f.text_field :assest_name %>
+    </p>
+  
+    <p>
+      <%= f.label :serial_no %><br/>
+      <%= f.text_field :serial_no %>
+    </p>
+
+    <p>
+        <%= f.label :category %><br/>
+        <%= f.text_field :category %>
+    </p>
+
+    <p>
+        <%= f.label :aesset_ammount %><br/>
+        <%= f.text_field :aesset_ammount %>
+    </p>
+
+    <p>
+        <%= f.label :department %><br/>
+        <%= f.text_field :department %>
+    </p>
+
+    <p>
+        <%= f.label :description %><br/>
+        <%= f.text_area :description %>
+    </p>
+  
+    <p>
+      <%= f.submit %>
+    </p>
+  
+<% end %>
+
+</div>

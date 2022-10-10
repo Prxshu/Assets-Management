@@ -1,0 +1,13 @@
+
+<% @assests.each do |assest| %>
+    <%= assest.assest_name %>
+    <%= assest.serial_no %>
+    <%= assest.category %>
+    <%= assest.aesset_ammount %>
+    <%= assest.department %>
+    <%= assest.description %></br>
+    <%= link_to 'Show',assest_path(assest)%>
+    <%= link_to 'edit',edit_assest_path(assest)%>
+    <%= link_to 'Delete',assest, method: :delete, data: {confirm: "Are you sure you ?"}%></br></br>
+
+<% end %>

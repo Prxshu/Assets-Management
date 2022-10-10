@@ -1,0 +1,8 @@
+<% if @assest.errors.any? %>
+    <h2>The following errors prevented the assests from being saved</h2>
+    <ul>
+      <% @assest.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
