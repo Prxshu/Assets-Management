@@ -1,13 +1,28 @@
 
+<div class="container">
 <% @assests.each do |assest| %>
-    <%= assest.assest_name %>
-    <%= assest.serial_no %>
-    <%= assest.category %>
-    <%= assest.aesset_ammount %>
-    <%= assest.department %>
-    <%= assest.description %></br>
-    <%= link_to 'Show',assest_path(assest)%>
-    <%= link_to 'edit',edit_assest_path(assest)%>
-    <%= link_to 'Delete',assest, method: :delete, data: {confirm: "Are you sure you ?"}%></br></br>
+
+<div class="card mb-3">
+  <img class="card-img-top" src="assets/card_image.jpg" height="200px" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">Asset Form</h5>
+    <p class="card-text"><%= assest.assest_name %></p>
+    <p class="card-text"><%= assest.serial_no %></p>
+    <p class="card-text"><%= assest.category %></p>
+    <p class="card-text"><%= assest.aesset_ammount %></p>
+    <p class="card-text"><%= assest.department %></p>
+    <p class="card-text"> <%= assest.description %></p>
+    <%= link_to "View", assest_path(assest), class: "btn btn-outline-success" %>
+    <%= link_to 'edit',edit_assest_path(assest), class: "btn btn-outline-info"%>
+    <%= link_to 'Delete',assest,class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure ?"}%>
+  </div>
+  <div class="card-footer text-muted">
+  <small>Created <%= time_ago_in_words(assest.created_at)%> ago,
+  edited <%= time_ago_in_words(assest.updated_at) %> ago
+  </small>
+</div>
+</div>
 
 <% end %>
+
+</div>
