@@ -18,9 +18,12 @@
     </p>
   
     <p>
-      <%= f.submit %>
+      <%= f.submit(@user.new_record? ? "Sign up" : "Update account") %>
     </p>
   
 <% end %>
+       <div class="mb-3">    
+            <%= link_to '[ Cancel and Return to assets listing ]' , assests_path,class:"text-info" %>
+      </div> 
 
 </div>

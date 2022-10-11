@@ -1,2 +1,11 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1 class="text-center mt-4"><%= @user.username %>'s profile</h1>
+
+<%= gravatar_for @user, size: 200 %>
+
+<% if logged_in? && @user == current_user %>
+    <div class="text-center mt-4">
+      <%= link_to "Edit your profile", edit_user_path(@user), class: "btn btn-outline-info" %>
+    </div>
+<% end %>
+<h3 class="text-center mt-4">Assets</h3>
+<%= render 'assests/assest' %>

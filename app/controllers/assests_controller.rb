@@ -3,7 +3,6 @@ class AssestsController < ApplicationController
   before_action :set_assest, only:[:show, :edit, :update, :destroy]
   
   def show
-    
   end
 
   def index
@@ -16,7 +15,7 @@ class AssestsController < ApplicationController
 
   def create
     @assest = Assest.new(assest_params)
-    @assest.user = User.first
+    @assest.user = current_user
     if @assest.save
       flash[:notice] = "Assest was created successfully."
       redirect_to @assest
@@ -29,12 +28,12 @@ class AssestsController < ApplicationController
   end
 
   def update
-    if @assest.update(assest_params)
-      flash[:notice] = "Assest was updated succesfully."
-      redirect_to @assest
-  else
-      render 'edit'
-  end
+        if @assest.update(assest_params)
+          flash[:notice] = "Assest was updated succesfully."
+          redirect_to @assest
+            else
+              render 'edit'
+          end
   end
 
   def destroy

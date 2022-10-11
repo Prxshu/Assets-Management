@@ -1,0 +1,59 @@
+<div class="container">
+    <% @assests.each do |assest| %>
+          <div class="row justify-content-md-center">
+          <div class="col-8 mt-4">
+              <div class="card text-center shadow mb-5 bg-white rounded">
+                  <div class="card-header font-italic">
+                    <% if assest.user %>
+                        by <%= link_to assest.user.username, user_path(assest.user) %> 
+                    <% end %>
+                  </div>
+                  <div class="card-body text-center">
+                      <h5 class="card-title">Asset Details</h5>
+
+                      <div class="d-flex">
+                          <label class="control-label col-sm-2 font-weight-bold">Asset Name: </label>
+                          <p class="card-text"><%= assest.assest_name %></p>
+                      </div>
+
+                      <div class="d-flex">
+                        <label class="control-label col-sm-2 font-weight-bold">Serial Number: </label>
+                        <p class="card-text"><%= assest.serial_no %></p>
+                      </div>
+
+                      <div class="d-flex">
+                        <label class="control-label col-sm-2 font-weight-bold"> Category: </label>
+                        <p class="card-text"><%= assest.category %> </p>
+                      </div>
+
+                      <div class="d-flex">
+                        <label class="control-label col-sm-2 font-weight-bold">Asset Amount: </label>
+                        <p class="card-text"><%= assest.aesset_ammount %> </p>
+                     </div>
+
+                      <div class="d-flex">
+                        <label class="control-label col-sm-2 font-weight-bold"> Department: </label>
+                        <p class="card-text"><%= assest.department %> </p>
+                      </div>
+
+                      <div class="d-flex">
+                          <label class="control-label col-sm-2 font-weight-bold"> Description: </label>
+                          <p class="card-text"><%= truncate(assest.description, length: 100) %> </p>
+                      </div>
+                      
+                      <%= link_to "View", assest_path(assest), class: "btn btn-outline-success" %>
+                      <% if logged_in? && assest.user == current_user %>
+                          <%= link_to "Edit", edit_assest_path(assest), class: "btn btn-outline-info" %>
+                          <%= link_to "Delete", assest_path(assest), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>
+                      <% end %>
+                  </div>
+                  <div class="card-footer text-muted">
+                      <small>Created <%= time_ago_in_words(assest.created_at)%> ago,
+                      edited <%= time_ago_in_words(assest.updated_at) %> ago
+                      </small>
+                  </div>
+              </div> 
+          </div>
+        </div>
+    <% end %>
+</div>
