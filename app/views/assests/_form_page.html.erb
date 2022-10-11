@@ -1,25 +1,26 @@
 
 
 <div class="container">
+<%= render 'validation',obj: @assest%>
 <%= form_with(model: @assest, data: {turbo:false})  do |f| %>
   
     <p>
-      <%= f.label :assest_name  %><br/>
+      <%= f.label :Asset_name  %><br/>
       <%= f.text_field :assest_name %>
     </p>
   
     <p>
-      <%= f.label :serial_no %><br/>
+      <%= f.label :Serial_no %><br/>
       <%= f.text_field :serial_no %>
     </p>
 
     <p>
-        <%= f.label :category %><br/>
+        <%= f.label :Category %><br/>
         <%= f.text_field :category %>
     </p>
 
     <p>
-        <%= f.label :aesset_ammount %><br/>
+        <%= f.label :Asset_ammount %><br/>
         <%= f.text_field :aesset_ammount %>
     </p>
 

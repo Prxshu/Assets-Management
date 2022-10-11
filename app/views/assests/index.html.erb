@@ -4,6 +4,12 @@
 
 <div class="card mb-3">
   <img class="card-img-top" src="assets/card_image.jpg" height="200px" alt="Card image cap">
+
+          <div class="card-header font-italic">
+              <% if assest.user %>
+                by <%= link_to assest.user.username, user_path(assest.user) %> 
+              <% end %>
+          </div>
   <div class="card-body">
     <h5 class="card-title">Asset Form</h5>
     <p class="card-text"><%= assest.assest_name %></p>

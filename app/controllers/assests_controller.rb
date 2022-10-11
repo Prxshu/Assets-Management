@@ -16,6 +16,7 @@ class AssestsController < ApplicationController
 
   def create
     @assest = Assest.new(assest_params)
+    @assest.user = User.first
     if @assest.save
       flash[:notice] = "Assest was created successfully."
       redirect_to @assest

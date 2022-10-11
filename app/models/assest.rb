@@ -1,4 +1,5 @@
 class Assest < ApplicationRecord
+    belongs_to :user
     validates :assest_name, presence: true
     validates :serial_no, presence: true
     validates :category, presence: true
