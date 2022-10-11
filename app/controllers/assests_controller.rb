@@ -6,7 +6,9 @@ class AssestsController < ApplicationController
   end
 
   def index
-    @assests = Assest.all
+    @q = Assest.ransack(params[:q])
+    @assests = @q.result(distinct: true)
+    
   end
   
   def new

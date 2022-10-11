@@ -1,3 +1,21 @@
 
 <h1 class="text-center mt-4">Listing all assests</h1>
+<div class="container">
+<%= search_form_for @q, url: assests_path do |form| %>
+    <div class="mx-auto" style="width: 200px;">
+                <div class="form-group m-2">
+                    <%= form.label :search_by_assets_name %>
+                    <%= form.text_field :assest_name_cont %>
+                </div>
+                <div class="form-group m-2">
+                        <%= form.submit 'Search Assets', class: "btn btn-outline-success btn-sm"%>
+                </div>
+    </div>
+
+   
+   
+
+
+<% end %>
+</div>
 <%= render 'assest'%>
