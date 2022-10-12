@@ -3,11 +3,11 @@ class UsersController < ApplicationController
   before_action :require_same_user, only: [:edit, :update, :destroy]
   
   def show
-    @assests = @user.assests
+    @assests = @user.assests.paginate(page: params[:page], per_page: 3)
   end
 
   def index
-    @users = User.all
+    @users = User.paginate(page: params[:page], per_page: 3)
   end
 
   def new
@@ -19,7 +19,7 @@ class UsersController < ApplicationController
   end
 
   def create
-   
+    @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
       flash[:notice] = "Welcome to the Assets Management #{@user.username}, you have successfully signed up"

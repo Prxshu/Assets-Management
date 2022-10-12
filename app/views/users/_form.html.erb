@@ -1,30 +1,38 @@
 <div class="container">
-<%= render 'assests/validation',obj: @user%>
+   
+  <div class="row justify-content-center">
+    <div class="col-10">
+          <%= render 'assests/validation',obj: @user%>
+          <%= form_with(model: @user, class:"shadow p-3 mb-3 bg-secondary rounded", data: {turbo:false})  do |f| %>
+            <div class="form-group m-2 row">
+              <%= f.label :username,class:"col-2 col-form-label text-light" %>
+              <div class="col-10">
+              <%= f.text_field :username,class: "form-control shadow rounded",placeholder:"Enter a username" %>
+              </div>
+            </div>
+          
+            <div class="form-group m-2 row">
+              <%= f.label :email,class: "col-2 col-form-label text-light" %>
+              <div class="col-10">
+              <%= f.email_field :email,class: "form-control shadow rounded",placeholder:"Enter your email address " %>
+              </div> 
+            </div>
 
-<%= form_with(model: @user, data: {turbo:false})  do |f| %>
-  
-    <p>
-      <%= f.label :username  %><br/>
-      <%= f.text_field :username %>
-    </p>
-  
-    <p>
-      <%= f.label :email %><br/>
-      <%= f.text_field :email %>
-    </p>
-
-    <p>
-        <%= f.label :password %><br/>
-        <%= f.text_field :password %>
-    </p>
-  
-    <p>
-      <%= f.submit(@user.new_record? ? "Sign up" : "Update account") %>
-    </p>
-  
-<% end %>
-       <div class="mb-3">    
-            <%= link_to '[ Cancel and Return to assets listing ]' , assests_path,class:"text-info" %>
+            <div class="form-group m-2 row">
+              <%= f.label :password,class: "col-2 col-form-label text-light" %>
+              <div class="col-10">
+              <%= f.password_field :password,class: "form-control shadow rounded",placeholder:"Enter your password here" %>
+              </div> 
+            </div>
+          
+            <div class="form-group m-2 text-center">
+              <%= f.submit(@user.new_record? ? "Sign up" : "Update account", class: "btn btn-outline-light btn-lg") %>
+            </div>
+          
+          <% end %>
+      </div>
+      <div class="mb-3 text-center">    
+            <%= link_to '[ Cancel and Return to assets listing ]' , assests_path,class:"text-secondary" %>
       </div> 
-
+  </div>
 </div>

@@ -8,4 +8,11 @@
     </div>
 <% end %>
 <h3 class="text-center mt-4">Assets</h3>
+
+<div class="flickr_pagination ">
+    <%= will_paginate @assests, :container => false %>
+</div>
 <%= render 'assests/assest' %>
+<div class="flickr_pagination ">
+    <%= will_paginate @assests, :container => false %>
+</div>

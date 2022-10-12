@@ -1,21 +1,38 @@
-<h1>Assests Details</h1>
 
-<div class="card-header font-italic">
-          by <%= @assest.user.username if @assest.user %>
-          <%= link_to gravatar_for(@assest.user), user_path(@assest.user) %>
+
+<h2 class="text-center mt-4">Assets details</h2>
+<div class="container">
+
+    <div class="row justify-content-md-center">
+    <div class="col-8 mt-4">
+        <div class="card text-center shadow mb-5 bg-white rounded">
+            <div class="card-header font-italic">
+               By <%= @assest.user.username if @assest.user %> 
+               <%= link_to gravatar_for(@assest.user), user_path(@assest.user) %>
+            </div>
+            <div class="card-body">
+            <div class="card-text text-left"><p><strong>Asset Name: </strong><%= @assest.assest_name%></p></div>
+            <div class="card-text text-left"><p><strong>Serial number: </strong><%= @assest.serial_no%></p></div>
+            <div class="card-text text-left"><p><strong>Asset Category: </strong><%= @assest.category%></p></div>
+            <div class="card-text text-left"><p><strong>Asset Ammount: </strong><%= @assest.aesset_ammount%></p></div>
+            <div class="card-text text-left"><p><strong>Asset Department: </strong><%= @assest.department%></p></div>
+            <div class="card-text text-left"> <p><strong>Asset Description: </strong><%= @assest.description%></p></div>
+            <div class="card-body">    
+                <% if logged_in? && @assest.user == current_user %>
+                        <%= link_to "Edit", edit_assest_path(@assest), class: "btn btn-outline-info" %>
+                        <%= link_to "Delete", assest_path(@assest), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>
+                <% end %>
+            </div>
+            <div class="card-footer text-muted">
+                <small>Created <%= time_ago_in_words(@assest.created_at)%> ago,
+                edited <%= time_ago_in_words(@assest.updated_at) %> ago
+                </small>
+            </div>
+        </div> 
+    </div>
 </div>
-<p><strong>Asset Name: </strong><%= @assest.assest_name%></p>
-<p><strong>Serial number: </strong><%= @assest.serial_no%></p>
-<p><strong>Asset Category: </strong><%= @assest.category%></p>
-<p><strong>Asset Ammount: </strong><%= @assest.aesset_ammount%></p>
-<p><strong>Asset Department: </strong><%= @assest.department%></p>
-<p><strong>Asset Description: </strong><%= @assest.description%></p>
-<% if logged_in? && @assest.user == current_user %>
-    <%= link_to "Edit", edit_assest_path(@assest), class: "btn btn-outline-info" %>
-    <%= link_to "Delete", assest_path(@assest), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>
-<% end %>
+</div>
 
-<%= link_to 'Return to assets listing' , assests_path%>
 
 
 
